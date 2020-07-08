@@ -20,7 +20,7 @@ dev_dependencies:
   flutter_launcher_icons: ^0.7.5
 
 flutter_icons:
-  image_path: "/home/dhruv/StudioProjects/review/ic_launcher/web_hi_res_512.png"
+  image_path: "ic_launcher/web_hi_res_512.png"
   android: true
   ios: true
 
