@@ -75,7 +75,7 @@ class ChooserState extends State<ArcChooser>
     arcItems.add(ArcItem("BAD", [Color(0xFFfe0944), Color(0xFFfeae96)],
         angleInRadiansByTwo + userAngle + (7 * angleInRadians)));
 
-    animation = new AnimationController(
+    animation = AnimationController(
         duration: const Duration(milliseconds: 200), vsync: this);
     animation.addListener(() {
       userAngle = lerpDouble(animationStart, animationEnd, animation.value);
@@ -95,7 +95,7 @@ class ChooserState extends State<ArcChooser>
     double centerY = MediaQuery.of(context).size.height * 1.5;
     centerPoint = Offset(centerX, centerY);
 
-    return new GestureDetector(
+    return GestureDetector(
 //        onTap: () {
 //          print('ChooserState.build ONTAP');
 //          animationStart = touchAngle;
@@ -164,18 +164,18 @@ class ChooserState extends State<ArcChooser>
 // draw the arc and other stuff
 class ChooserPainter extends CustomPainter {
   //debugging Paint
-  final debugPaint = new Paint()
+  final debugPaint = Paint()
     ..color = Colors.red.withAlpha(100) //0xFFF9D976
     ..strokeWidth = 1.0
     ..style = PaintingStyle.stroke;
 
-  final linePaint = new Paint()
+  final linePaint = Paint()
     ..color = Colors.black.withAlpha(65) //0xFFF9D976
     ..strokeWidth = 2.0
     ..style = PaintingStyle.stroke
     ..strokeCap = StrokeCap.square;
 
-  final whitePaint = new Paint()
+  final whitePaint = Paint()
     ..color = Colors.white //0xFFF9D976
     ..strokeWidth = 1.0
     ..style = PaintingStyle.fill;
@@ -244,20 +244,20 @@ class ChooserPainter extends CustomPainter {
           arcItems[i].startAngle,
           angleInRadians,
           true,
-          new Paint()
+          Paint()
             ..style = PaintingStyle.fill
-            ..shader = new LinearGradient(
+            ..shader = LinearGradient(
               colors: arcItems[i].colors,
             ).createShader(dummyRect));
 
       //Draw text
-      TextSpan span = new TextSpan(
-          style: new TextStyle(
+      TextSpan span = TextSpan(
+          style: TextStyle(
               fontWeight: FontWeight.normal,
               fontSize: 32.0,
               color: Colors.white),
           text: arcItems[i].text);
-      TextPainter tp = new TextPainter(
+      TextPainter tp = TextPainter(
         text: span,
         textAlign: TextAlign.center,
         textDirection: TextDirection.ltr,
@@ -290,18 +290,18 @@ class ChooserPainter extends CustomPainter {
           angleInRadians +
           angleInRadians +
           angleInRadiansByTwo);
-      tp.paint(canvas, new Offset(0.0, 0.0));
+      tp.paint(canvas, Offset(0.0, 0.0));
       canvas.restore();
 
       //big lines
       canvas.drawLine(
-          new Offset(center.dx + radius4 * cos(arcItems[i].startAngle),
+          Offset(center.dx + radius4 * cos(arcItems[i].startAngle),
               center.dy + radius4 * sin(arcItems[i].startAngle)),
           center,
           linePaint);
 
       canvas.drawLine(
-          new Offset(
+          Offset(
               center.dx +
                   radius4 * cos(arcItems[i].startAngle + angleInRadiansByTwo),
               center.dy +
@@ -311,7 +311,7 @@ class ChooserPainter extends CustomPainter {
 
       //small lines
       canvas.drawLine(
-          new Offset(
+          Offset(
               center.dx +
                   radius5 * cos(arcItems[i].startAngle + angleInRadians1),
               center.dy +
@@ -320,7 +320,7 @@ class ChooserPainter extends CustomPainter {
           linePaint);
 
       canvas.drawLine(
-          new Offset(
+          Offset(
               center.dx +
                   radius5 * cos(arcItems[i].startAngle + angleInRadians2),
               center.dy +
@@ -329,7 +329,7 @@ class ChooserPainter extends CustomPainter {
           linePaint);
 
       canvas.drawLine(
-          new Offset(
+          Offset(
               center.dx +
                   radius5 * cos(arcItems[i].startAngle + angleInRadians3),
               center.dy +
@@ -338,7 +338,7 @@ class ChooserPainter extends CustomPainter {
           linePaint);
 
       canvas.drawLine(
-          new Offset(
+          Offset(
               center.dx +
                   radius5 * cos(arcItems[i].startAngle + angleInRadians4),
               center.dy +
@@ -348,7 +348,7 @@ class ChooserPainter extends CustomPainter {
     }
 
     //shadow
-    Path shadowPath = new Path();
+    Path shadowPath = Path();
     shadowPath.addArc(
         Rect.fromLTRB(leftX3, topY3, rightX3, bottomY3),
         ChooserState.degreeToRadians(180.0),
