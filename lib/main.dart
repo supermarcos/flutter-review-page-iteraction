@@ -6,25 +6,25 @@ import 'package:review/SmilePainter.dart';
 import 'package:review/ArcChooser.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitDown,
     DeviceOrientation.portraitUp,
   ]);
-  runApp(new MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
-    return new MaterialApp(
-      theme: new ThemeData(
+    return MaterialApp(
+      theme: ThemeData(
         primarySwatch: Colors.red,
       ),
       debugShowCheckedModeBanner: false,
-      home: new Scaffold(
+      home: Scaffold(
         backgroundColor: Colors.white,
-        body: new MyReviewPage(),
+        body: MyReviewPage(),
       ),
     );
   }
@@ -34,12 +34,12 @@ class MyReviewPage extends StatefulWidget {
   MyReviewPage({Key key}) : super(key: key);
 
   @override
-  _MyReviewPageState createState() => new _MyReviewPageState();
+  _MyReviewPageState createState() => _MyReviewPageState();
 }
 
 class _MyReviewPageState extends State<MyReviewPage>
     with TickerProviderStateMixin {
-  final PageController pageControl = new PageController(
+  final PageController pageControl = PageController(
     initialPage: 2,
     keepPage: false,
     viewportFraction: 0.2,
@@ -77,7 +77,7 @@ class _MyReviewPageState extends State<MyReviewPage>
     startColor = Color(0xFF21e1fa);
     endColor = Color(0xff3bb8fd);
 
-    animation = new AnimationController(
+    animation = AnimationController(
       value: 0.0,
       lowerBound: 0.0,
       upperBound: 400.0,
@@ -122,7 +122,7 @@ class _MyReviewPageState extends State<MyReviewPage>
 
   @override
   Widget build(BuildContext context) {
-    var textStyle = new TextStyle(
+    var textStyle = TextStyle(
         color: Colors.white, fontSize: 24.00, fontWeight: FontWeight.bold);
 
     return Container(
@@ -156,9 +156,9 @@ class _MyReviewPageState extends State<MyReviewPage>
 //            },
 //          ),
 
-//          new SizedBox(
+//           SizedBox(
 //            height: 50.0,
-//            child: new NotificationListener(
+//            child:  NotificationListener(
 //              onNotification: (ScrollNotification notification){
 //                if(!notification.metrics.atEdge){
 //                  print('_MyReviewPageState.build ' + MediaQuery.of(context).size.width.toString() + " " + notification.metrics.pixels.toString());
@@ -173,11 +173,11 @@ class _MyReviewPageState extends State<MyReviewPage>
 //                },
 //                controller: pageControl,
 //                itemCount: arcItems.length,
-//                physics: new AlwaysScrollableScrollPhysics(),
+//                physics:  AlwaysScrollableScrollPhysics(),
 //                itemBuilder: (context, index) {
-//                  return new Container(
-//                      decoration: new BoxDecoration(
-//                        gradient: new LinearGradient(
+//                  return  Container(
+//                      decoration:  BoxDecoration(
+//                        gradient:  LinearGradient(
 //                            colors: [
 //                              arcItems[index].colors[0],
 //                              arcItems[index].colors[1]
@@ -185,7 +185,7 @@ class _MyReviewPageState extends State<MyReviewPage>
 //                        ),
 //                      ),
 //                      alignment: Alignment.center,
-//                      child: new Text(
+//                      child:  Text(
 //                        arcItems[index].text,
 //                        style: textStyle,
 //                      ));
