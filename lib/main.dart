@@ -6,6 +6,7 @@ import 'package:review/SmilePainter.dart';
 import 'package:review/ArcChooser.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitDown,
     DeviceOrientation.portraitUp,
